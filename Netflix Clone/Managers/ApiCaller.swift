@@ -11,6 +11,7 @@ struct Constants {
     
     static let API_KEY = "b57a55757c3ae33afe7c09cbeda3194f"
     static let baseURL = "https://api.themoviedb.org"
+    static let YoutubeAPI_KEY = "AIzaSyCr-w61Jinfn3rb0VTM9926K17TE8tUh1c"
 }
 
 enum APIError: Error{
@@ -187,6 +188,31 @@ class APICaller {
         
     }
     
+    func getMovie( with query: String, completion: @escaping (Result< VideoElement, Error>) -> Void) {
+        
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
+        guard let url = URL(string: "https://youtube.googleapis.com/youtube/v3/search?q=\(query)&key=\(Constants.YoutubeAPI_KEY)") else {return}
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)){data, _, error in
+            
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            do{
+                let results = try JSONDecoder().decode(YouTubeSearchResponse.self, from: data)
+//                print(results)
+                completion(.success(results.items[0]))
+            }catch{
+//                print("error:\(error.localizedDescription)")
+//                print(String(describing: error))
+                completion(.failure(APIError.failedToGetData))
+            }
+
+        }
+        task.resume()
+        
+    }
+    
     
 }
 
@@ -198,3 +224,4 @@ class APICaller {
 //discover" https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate
 
 //search: https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
+//search youtube: https://youtube.googleapis.com/youtube/v3/search?q=Harry&key=[YOUR_API_KEY] HTTP/1.1

@@ -43,21 +43,26 @@ class HomeViewController: UIViewController {
         
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         homeFeedTable.tableHeaderView = headerView
+        
+        APICaller.shared.getMovie(with: "Harry" ) { reuslt in
+            //
+        }
 //        getTrendingMovies()
 //        getTrendingTv()
 //
     }
     private func configNavbar(){
-        var image = UIImage(named: "logo")
+        var image = UIImage(named: "netflix_logo")
         
         image = image?.withRenderingMode(.alwaysOriginal)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image:  UIImage(systemName: "person"), style: .done, target: self, action: nil)
-
+//        navigationItem.setLeftBarButtonItems(<#T##items: [UIBarButtonItem]?##[UIBarButtonItem]?#>, animated: <#T##Bool#>)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image:  image, style: .done, target: self, action: nil)
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
             UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
         ]
         navigationController?.navigationBar.tintColor = .white
+//        navigationController?.pushViewController(TitlePreviewViewController(), animated: true)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -104,7 +109,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier:CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else{
             return UITableViewCell()
         }
-        
+        cell.delegate = self
         switch indexPath.section {
             case Sections.TrendingMovies.rawValue:
                 APICaller.shared.getTrendingMovies{ result in
@@ -181,5 +186,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
         header.textLabel?.textColor = .white
         header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
+    }
+}
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+    func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewModel) {
+        DispatchQueue.main.async {
+            [weak self] in
+            let vc = TitlePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+      
     }
 }
