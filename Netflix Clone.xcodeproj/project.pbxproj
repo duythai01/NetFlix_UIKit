@@ -31,6 +31,7 @@
 		18972ABF2892488D00BA1696 /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18972ABE2892488D00BA1696 /* YoutubeSearchResponse.swift */; };
 		18972AC1289267FC00BA1696 /* TitlePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18972AC0289267FC00BA1696 /* TitlePreviewViewController.swift */; };
 		18972AC328926D0800BA1696 /* TitlePreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18972AC228926D0800BA1696 /* TitlePreviewModel.swift */; };
+		1ABBFF0B29409328003F6740 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABBFF0A29409328003F6740 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		18972ABE2892488D00BA1696 /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
 		18972AC0289267FC00BA1696 /* TitlePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewController.swift; sourceTree = "<group>"; };
 		18972AC228926D0800BA1696 /* TitlePreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewModel.swift; sourceTree = "<group>"; };
+		1ABBFF0A29409328003F6740 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		188F82372886595E0047DF50 /* Netflix Clone */ = {
 			isa = PBXGroup;
 			children = (
+				1ABBFF092940930C003F6740 /* TestPackage */,
 				188E10CC2886A7EC00BD42F2 /* Resources */,
 				188E10CB2886A7D700BD42F2 /* Managers */,
 				188E10CA2886A7B300BD42F2 /* Models */,
@@ -182,6 +185,14 @@
 				188C1E76288C23F4001E7B34 /* core */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1ABBFF092940930C003F6740 /* TestPackage */ = {
+			isa = PBXGroup;
+			children = (
+				1ABBFF0A29409328003F6740 /* Test.swift */,
+			);
+			path = TestPackage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 				18972ABF2892488D00BA1696 /* YoutubeSearchResponse.swift in Sources */,
 				188F823D2886595E0047DF50 /* MainTabBarViewController.swift in Sources */,
 				188C1E75288C23EE001E7B34 /* SearchResultViewController.swift in Sources */,
+				1ABBFF0B29409328003F6740 /* Test.swift in Sources */,
 				18898E5F288AAF9D00DD6BFC /* TitleVIewModel.swift in Sources */,
 				188F82392886595E0047DF50 /* AppDelegate.swift in Sources */,
 				188F823B2886595E0047DF50 /* SceneDelegate.swift in Sources */,
