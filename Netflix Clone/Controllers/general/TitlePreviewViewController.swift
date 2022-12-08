@@ -84,7 +84,7 @@ class TitlePreviewViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(webViewConstraints)
-        NSLayoutConstraint.activate(labelTitleCpmstraints)
+        NSLayoutConstraint.activate(labelTitleConstraints)
         NSLayoutConstraint.activate(overviewLableConstraints)
         NSLayoutConstraint.activate(downloadBtnConstraints)
     }
