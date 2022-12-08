@@ -1,2 +1,12 @@
 .DS_Store
 /Users/duythai/Desktop/UIKit/NetFlix_UIKit/Netflix Clone.xcodeproj/project.xcworkspace/xcuserdata/duythai.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.xcodeproj/
+DerivedData/
+
+
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+
